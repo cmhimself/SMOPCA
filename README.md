@@ -7,10 +7,15 @@ Spatial Multi-Omics PCA (SMOPCA) is a novel dimension reduction method to integr
 ## Dependencies
 
 python 3.10.0
+
 scanpy 1.9.1
+
 numpy 1.23.5
+
 scikit-learn 1.2.1
+
 scipy 1.10.0
+
 h5py 3.8.0
 
 ## Run SMOPCA
