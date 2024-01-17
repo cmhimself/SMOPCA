@@ -59,7 +59,7 @@ class SMOPCA:
         elif kernel_type == "tsne":
             pos *= length_scale
             self.K = np.power(np.power(distance_matrix(pos, pos), 2) + 1, -1)
-        elif kernel_type == "dummy":
+        elif kernel_type == "identity":
             logger.info("using Identity as the kernel matrix")
             self.K = np.identity(self.n)
         else:
