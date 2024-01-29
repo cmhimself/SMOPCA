@@ -15,21 +15,19 @@ Spatial Multi-Omics PCA (SMOPCA) is a novel dimension reduction method to integr
 
 ## Run SMOPCA
 
-1. Prepare the input normalized and log-transformed data matrices as numpy arrays and specify the dimension of the latent factors. The data arrays can come from various sources, such as h5 dataset, .csv file, etc.
-   - Note that SMOPCA takes input matrices with columns corresponding to cells/spots.
-2. Specify the type of kernel and the length_scale parameter, and build the kernel matrix.
-   - For the kernel type parameter, we use matern kernel for all datasets included in this study.
-   - For the length_scale parameter, we set length_scale=0.25 for UMAP coordinates and length_scale=5 for simulated and real spatial coordinates.
+1. Prepare input data
+   - SMOPCA accepts gene expression and protein/atac data matrices. Each modality of the data is preprocessed and normalized  separately. Initially, genes and proteins with zero counts were filtered out. Subsequently, the count matrix was normalized based on library size, followed by log-transformation and scaling to achieve unit variance and zero mean. ATAC reads are mapped to gene regions and the peak matrix is collapsed into a gene activity matrix, adhering to the established protocol from the Satija lab. The gene activity matrix was preprocessed and normalized using the same method as applied to mRNA data. Finally, we recommend to save the data into a hdf5 file.
+   - Note that SMOPCA takes input matrices with columns corresponding to cells or spots.
+2. Specify model hyperparameters and Model training
+   - the dimensionality of the latent factors (default 20)
+   - the kernel type (default matern kernel)
+   - the length_scale parameter (We set length_scale=0.25 for UMAP coordinates and length_scale=5 for simulated and real spatial coordinates.)
    - For the rest of the parameters, see more in tutorials.
-3. Perform inferencing and extract the latent representation.
-
-## Downstream Analysis
-
-SMOPCA outputs a joint latent representation of spatial multi-omics data which can be used for further downstream analyses:
-
-1. Clustering analysis with specified method of clustering (KMeans recommended);
-2. UMAP or t-SNE visualization with predicted or ground truth labels;
-3. Differential expression analysis based on predicted cell type labels.
+3. Downstream analysis
+   - Visualization
+   - Clustering analysis
+   - Differential expression analysis
+   - and many other tasks
 
 ## Datasets
 
