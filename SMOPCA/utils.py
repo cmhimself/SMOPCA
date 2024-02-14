@@ -1,22 +1,10 @@
-import h5py
-import collections
-import scipy
 import seaborn as sns
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 import scanpy as sc
-import igraph
-import os
 from sklearn import metrics
 from matplotlib.patches import Ellipse
-from scipy.spatial.distance import pdist
-from scipy.spatial.distance import squareform
 from scipy import sparse
-from sklearn.neighbors import kneighbors_graph
-from scanpy.tools import louvain, leiden
-from copy import deepcopy, copy
-from munkres import Munkres
 
 
 color_spatialciteseq = ['#89c3e7', '#fee215', '#e6194b', '#3cb44b', '#911eb4', '#0f84c4', '#f58231']

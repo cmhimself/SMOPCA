@@ -2,16 +2,14 @@
 
 Spatial Multi-Omics PCA (SMOPCA) is a novel dimension reduction method to integrate multi-modal data and extract low-dimensional representations with preserved spatial dependencies among spots.
 
-<img src="img/fig1.jpg" alt="fig1" style="zoom:50%;" />
+![](https://github.com/cmhimself/SMOPCA/blob/main/img/fig1.jpg?raw=true)
 
-## Dependencies
+## Installation
 
-- python 3.10.0
-- scanpy 1.9.1
-- numpy 1.23.5
-- scikit-learn 1.2.1
-- scipy 1.10.0
-- h5py 3.8.0
+SMOPCA can be installed directly from PyPI using the following command:
+```
+pip install SMOPCA
+```
 
 ## Run SMOPCA
 
