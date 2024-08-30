@@ -7,7 +7,21 @@ from matplotlib.patches import Ellipse
 from scipy import sparse
 
 
-color_spatialciteseq = ['#89c3e7', '#fee215', '#e6194b', '#3cb44b', '#911eb4', '#0f84c4', '#f58231']
+def preprocess_adata(adata_list, filter_gene=25, filter_cell=50, hvg=2000):
+    adata_rna, adata_adt = adata_list
+    sc.pp.filter_genes(adata_rna, min_cells=filter_gene)
+    sc.pp.filter_cells(adata_rna, min_genes=filter_cell)
+    adata2 = adata_adt[adata_rna.obs_names].copy()
+    sc.pp.highly_variable_genes(adata_rna, flavor="seurat_v3", n_top_genes=hvg)
+    sc.pp.normalize_total(adata_rna, target_sum=1e4)
+    sc.pp.log1p(adata_rna)
+    sc.pp.scale(adata_rna)
+    adata1 = adata_rna[:, adata_rna.var['highly_variable']]
+    adata2 = clr_normalize_each_cell(adata2)
+    sc.pp.scale(adata2)
+    pos = np.array(adata1.obsm['spatial'])
+    X1, X2 = adata1.X.toarray(), adata2.X
+    return X1, X2, pos
 
 
 def clustering_metric(y, y_pred):
