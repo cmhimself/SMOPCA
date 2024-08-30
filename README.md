@@ -19,13 +19,13 @@ pip install SMOPCA
 2. Specify model hyperparameters and Model training
    - the dimensionality of the latent factors (default 20)
    - the kernel type (default matern kernel)
-   - the length_scale parameter (We set length_scale=0.25 for UMAP coordinates and length_scale=5 for simulated and real spatial coordinates.)
    - For the rest of the parameters, see more in tutorials.
 3. Downstream analysis
    - Visualization
    - Clustering analysis
    - Differential expression analysis
-   - and many other tasks
+   - GSEA
+   - Other tasks
 
 ## Datasets
 
